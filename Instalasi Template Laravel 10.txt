@@ -1,0 +1,9 @@
+Langkah-langkah install template :
+1. Extract file template 
+2. Jalankan 'composer install' -> 'composer dump-autoload'
+3. Jalankan 'php artisan serve'
+4. Generate APP KEY
+5. Buat Database Aplikasi
+6. Jalankan 'artisan migrate:fresh' -> 'php artisan db:seed'
+
+PASSWORD : 12345678
