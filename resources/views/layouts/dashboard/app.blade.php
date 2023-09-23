@@ -8,11 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
+  <meta name="_token" content="{{csrf_token()}}" />
   <!-- App favicon -->
   <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
   <!-- custom CSS-->
   @stack('plugin-css')
+
+  <!-- Sweet Alert css-->
+  <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 
   <!-- Layout config Js -->
   <script src="{{ asset('assets/js/layout.js') }}"></script>
@@ -120,6 +124,18 @@
   <!-- custom JS-->
   @stack('script')
 
+  <!-- prismjs plugin -->
+  <script src="assets/libs/prismjs/prism.js"></script>
+  <script src="assets/libs/list.js/list.min.js"></script>
+  <script src="assets/libs/list.pagination.js/list.pagination.min.js"></script>
+
+  <!-- listjs init -->
+  <script src="assets/js/pages/listjs.init.js"></script>
+
+  <!-- Sweet Alerts js -->
+  <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+  @include('sweetalert::alert')
 </body>
 
 </html>

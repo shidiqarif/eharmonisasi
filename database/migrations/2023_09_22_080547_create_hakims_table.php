@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('hakims', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->string('nama');
             $table->char('nip',18)->unique();
             $table->boolean('status')->default(true);

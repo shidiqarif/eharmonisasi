@@ -4,15 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Hakim;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Http\RedirectResponse;
 
 class HakimController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        return view('referensi.hakim.index');
+        $hakims = Hakim::orderBy('nama')->paginate(10);
+        return view('referensi.hakim.index',['hakims' => $hakims]);       
     }
 
     /**
@@ -20,7 +24,7 @@ class HakimController extends Controller
      */
     public function create()
     {
-        //
+        return view('hakim.create');
     }
 
     /**
@@ -28,7 +32,33 @@ class HakimController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*
+        $validateData = $request->validate([
+            'nama' => 'required',
+            'nip' => 'required|alpha_num|size:18|unique:hakims,nip',
+            'keterangan' => 'required',
+            'status' => 'required',
+        ]);
+        // dd($validateData);
+        Hakim::create($validateData);
+        Alert::success('Berhasil', "Hakim $request->nama berhasil dibuat");
+        return back();
+        */
+        $validator = \Validator::make($request->all(), [
+            'nama' => 'required',
+            'nip' => 'required|alpha_num|size:18|unique:hakims,nip',
+            'keterangan' => 'required',
+            'status' => 'required',
+        ]);
+
+        if ($validator->fails())
+        {
+            return response()->json(['errors'=>$validator->errors()->all()]);
+        }
+
+        $input = $request->all();
+        Hakim::create($input);
+        return response()->json(['success'=>'Data is successfully added']);
     }
 
     /**

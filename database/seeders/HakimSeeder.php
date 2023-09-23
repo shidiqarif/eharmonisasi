@@ -12,6 +12,6 @@ class HakimSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \App\Models\Hakim::factory()->count(10)->create();
     }
 }

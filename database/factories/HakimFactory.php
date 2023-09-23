@@ -16,8 +16,13 @@ class HakimFactory extends Factory
      */
     public function definition(): array
     {
+        $daftar_titel = ["S.H.,M.H", "S.H.,M.Hum", "S.H.,LLM", "S.H"];
+
         return [
-            //
+            'nip'  => $this->faker->unique()->numerify('19##############'),
+            'nama' => $this->faker->firstName()." ".$this->faker->lastName()." ".$this->faker->randomElement($daftar_titel),
+            'status' => $this->faker->numberBetween(0,1),
+            'keterangan' => '-',
         ];
     }
 }

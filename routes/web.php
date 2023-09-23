@@ -49,5 +49,5 @@ Route::group(['middleware' => ['web', 'auth', 'verified']], function () {
 
     Route::resource('pelatihan', PelatihanController::class)->only('index');
     Route::resource('perkara', PerkaraController::class)->only('index');
-    Route::resource('hakim', HakimController::class)->only('index','store');
+    Route::resource('hakim', HakimController::class)->only('index', 'store', 'update', 'destroy');
 });
